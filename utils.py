@@ -141,7 +141,7 @@ def get_sources(answer: Dict[str, Any], docs: List[Document]) -> List[Document]:
     return source_docs
 
 
-def wrap_text_in_html(text: str | List[str]) -> str:
+def wrap_text_in_html(text: str) -> str:
     """Wraps each text block separated by newlines in <p> tags"""
     if isinstance(text, list):
         # Add horizontal rules between pages
