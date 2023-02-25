@@ -56,15 +56,24 @@ with st.sidebar:
         text = text_to_docs(doc)
         try:
             with st.spinner("Indexing document... This may take a while⏳"):
-                index = embed_docs(text)
+                result = embed_docs(text)
+                index = result[0]
+                embeddings = result[1]
                 st.session_state["api_key_configured"] = True
         except OpenAIError as e:
             st.error(e._message)
 
 tab1, tab2 = st.tabs(["Intro", "Semantic Search"])
 with tab1:
-    st.markdown("### Semantic Search")
-    st.write("Semantic Search was written with the following tools:")
+    st.markdown("### Semantic Search with cosine similarity")
+    st.write("Cosine similarity is a technique used to measure the similarity between two vectors. In the context of OpenAI's embedding API, cosine similarity is used to compare the similarity between two pieces of text based on their underlying vector representations.")
+    st.write("Here's how it works:")
+    st.write("1.First, the embedding API converts each piece of text into a vector representation using a pre-trained language model. This vector represents the meaning and context of the text.")
+    st.write("2.The cosine similarity function then takes these two vectors and calculates the cosine of the angle between them. The cosine similarity score ranges from -1 to 1, where 1 indicates that the two vectors are identical, 0 indicates that they are completely dissimilar, and -1 indicates that they are exact opposites.")
+    st.write("3.This cosine similarity score is then used to determine the similarity between the two pieces of text. For example, if the cosine similarity score is close to 1, the two pieces of text are likely very similar in meaning, while a score close to 0 suggests that they are completely different.")
+    st.write("Overall, cosine similarity is a powerful tool for comparing the semantic similarity between two pieces of text, and OpenAI's embedding API makes it easy to implement this technique in your own projects.")
+    st.markdown("""---""")
+    st.markdown("## Semantic Search was written with the following tools:")
     st.markdown("#### Code GPT")
     st.write("All code was written with the help of Code GPT. Visit [codegpt.co]('https://codegpt.co') to get the extension.")
     st.markdown("#### Streamlit")

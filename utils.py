@@ -114,7 +114,9 @@ def embed_docs(docs: List[Document]) -> VectorStore:
         embeddings = OpenAIEmbeddings(openai_api_key=st.session_state.get("OPENAI_API_KEY"))  # type: ignore
         index = FAISS.from_documents(docs, embeddings)
 
-        return index
+        # creamos un array para guardar index y guardar embeddings
+        result = [index, embeddings]
+        return result
 
 
 @st.cache(allow_output_mutation=True)
