@@ -1,6 +1,6 @@
 ---
 title: Semantic Search
-emoji: 🌍
+emoji: 🔍
 colorFrom: red
 colorTo: blue
 sdk: streamlit
